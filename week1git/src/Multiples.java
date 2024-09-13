@@ -1,8 +1,4 @@
 public class Multiples {
-    public static void main(String[] args) {
-        System.out.println(main(1000, 3, 5));
-    }
-
     public static int main(int n, int a, int b) {
         int count = 0;
         for (int i = 1; i < n; i++){
@@ -12,4 +8,8 @@ public class Multiples {
         }
         return count;
     }
+    public static int main(int n) {
+        return main(n, 3, 5);
+    }
+
 }
