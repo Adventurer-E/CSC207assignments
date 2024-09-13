@@ -23,10 +23,7 @@ public class TextTTTGame {
             view.displayBoard(board.getBoard());
             System.out.println("Player " + board.getCurrentPlayer() + ", enter your move by typing the row then a space then column number. Your options are 0, 1, or 2.");
             int row = scanner.nextInt();
-            /*
-            TODO 1 line
-            There's a variable declaration missing. Its initial value should come from the scanner.
-             */
+            int col = scanner.nextInt();
             controller.makeMove(row, col);
             if (board.checkWin() != '-' || board.isFull()) {
                 break;
