@@ -8,8 +8,8 @@ public class Multiples {
         }
         return count;
     }
-    public static int main(int n) {
-        return main(n, 3, 5);
+    public static int main(String[] args) {
+        return main(1000, 3, 5);
     }
 
 }
