@@ -35,13 +35,15 @@ public class LanguageCodeConverter {
             List<String> lines = Files.readAllLines(Paths.get(getClass()
                     .getClassLoader().getResource(filename).toURI()));
             List<String> instanceVariables = Arrays.asList(lines.get(0).split("\t"));
-            int indexCode = instanceVariables.indexOf("Code");
-            int indexLanguage = instanceVariables.indexOf("ISO Languages Names");
-            lines.iterator().forEachRemaining(line -> {
-                List<String> split = Arrays.asList(line.split("\t"));
+//            int indexCode = instanceVariables.indexOf("Code");
+//            int indexLanguage = instanceVariables.indexOf("ISO Languages Names");
+            int indexCode = 1;
+            int indexLanguage = 0;
+            for (int i = 1; i < lines.size(); i++) {
+                List<String> split = Arrays.asList(lines.get(i).split("\t"));
                 this.codeToLanguage.put(split.get(indexCode), split.get(indexLanguage));
                 this.languageToCode.put(split.get(indexLanguage), split.get(indexCode));
-            });
+            }
         }
         catch (IOException | URISyntaxException ex) {
             throw new RuntimeException(ex);
@@ -55,7 +57,7 @@ public class LanguageCodeConverter {
      * @return the name of the language corresponding to the code
      */
     public String fromLanguageCode(String code) {
-        return this.codeToLanguage.get(code);
+        return this.codeToLanguage.get(code.toLowerCase());
     }
 
     /**
